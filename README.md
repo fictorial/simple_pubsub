@@ -58,6 +58,15 @@ Someone wrote a malformed message.
 
 All messages that are received due to some subscription.
 
+#### method: subscribe(chan, cb)
+
+Subscribe to a channel 'chan' and call back function 'cb' with the `msg`
+and `chan` when a message is published to 'chan'.
+
+#### method: publish(msg, chan)
+
+Publish a message 'msg' to channel 'chan'.
+
 ## Notes
 
 System messages are published on a reserved channel named `simplepubsub`.
