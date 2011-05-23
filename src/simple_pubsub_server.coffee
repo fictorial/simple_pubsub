@@ -26,11 +26,9 @@ server = net.createServer (client) ->
         continue unless line.length > 0
         msg = JSON.parse line
         if msg.sub?
-          log.debug "client #{client.id} subscribes to #{msg.sub}"
           client.subs[msg.sub] = true
           (all_subs[msg.sub] or= {})[client.id] = true
         else if msg.pub?
-          log.debug "client #{client.id} publishes #{msg.pub.msg} to #{msg.pub.chan}"
           for client_id, _ of (all_subs[msg.pub.chan] or {})
             log.debug "forwarding message to client #{client_id}"
             clients[client_id].write JSON.stringify(msg) + CRLF
@@ -41,7 +39,6 @@ server = net.createServer (client) ->
       client.destroy()
 
   client.on 'close', () =>
-    log.debug "client #{client.id} closed"
     for chan, _ of client.subs
       delete all_subs[chan][client.id]
       delete all_subs[chan] if all_subs[chan].length == 0
@@ -55,4 +52,4 @@ server.listen port, host, () ->
 process.on 'uncaughtException', (err) ->
   log.error "uncaught exception! #{err.toString()}"
   for client in clients
-    client.write JSON.stringify(msg:{msg:err.toString(), chan:'simplepubsub'}) + CRLF
+    client.write JSON.stringify(pub:{msg:err.toString(), chan:'simplepubsub'}) + CRLF
