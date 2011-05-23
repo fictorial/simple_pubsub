@@ -22,7 +22,7 @@ repository to work with the CoffeeScript version.
 
 ## Example Publisher
 
-    var client = require('simple_pubsub_client').connect();
+    var client = require('simple_pubsub').connect();
     var timer_id = setInterval(function () {
       client.publish(new Date(), 'current-time');
     }, 1000);
@@ -32,13 +32,13 @@ repository to work with the CoffeeScript version.
 
 ## Example Subscriber
 
-    require('simple_pubsub_client').connect().subscribe('current-time', function (msg, chan) {
+    require('simple_pubsub').connect().subscribe('current-time', function (msg, chan) {
       console.log("The time is " + msg);
     });
 
 ## API
 
-### module: simple_pubsub_client
+### module: simple_pubsub
 
 #### function: connect(port=9912, host='127.0.0.1')
 
