@@ -63,6 +63,10 @@ All messages that are received due to some subscription.
 Subscribe to a channel 'chan' and call back function 'cb' with the `msg`
 and `chan` when a message is published to 'chan'.
 
+#### method: unsubscribe(chan)
+
+Unsubscribe from channel 'chan'.
+
 #### method: publish(msg, chan)
 
 Publish a message 'msg' to channel 'chan'.

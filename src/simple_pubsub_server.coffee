@@ -32,6 +32,9 @@ server = net.createServer (client) ->
           for client_id, _ of (all_subs[msg.pub.chan] or {})
             log.debug "forwarding message to client #{client_id}"
             clients[client_id].write JSON.stringify(msg) + CRLF
+        else if msg.unsub?
+          delete client.subs[msg.unsub]
+          delete all_subs[msg.unsub][client.id] if all_subs[msg.unsub]?
         else
           throw new Error 'unknown msg type'
     catch err

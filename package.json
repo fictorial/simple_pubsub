@@ -1,6 +1,6 @@
 {
   "name": "simple_pubsub",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple publish-subscribe server and client",
   "keywords": [ "publish-subscribe", "pubsub", "messaging", "client", "server" ],
   "author": "Brian Hammond <brian@fictorial.com> (http://fictorial.com)",

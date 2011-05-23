@@ -7,7 +7,7 @@ class SimplePubsubClient extends EventEmitter
   constructor: (port, host) ->
     @subs = {} # chan => Function
     @sock = net.createConnection port, host
-    @sock.on 'connect', () =>
+    @sock.on 'connect', =>
       @sock.setTimeout 0
       @sock.setKeepAlive true
       @sock.setEncoding 'utf8'
@@ -37,9 +37,10 @@ class SimplePubsubClient extends EventEmitter
       @sock.destroy()
       false
 
-  subscribe: (chan, cb) -> @subs[chan] = cb if @_write sub:chan
-  publish: (msg, chan) -> @_write pub:{msg:msg, chan:chan}
-  close: -> @sock.close()
+  subscribe: (chan, cb) -> @subs[chan] = cb   if @_write sub:chan
+  unsubscribe: (chan)   -> delete @subs[chan] if @_write unsub:chan
+  publish: (msg, chan)  -> @_write pub:{msg:msg, chan:chan}
+  close:                -> @sock.close()
 
 exports.connect = (port=9912, host='127.0.0.1') ->
   new SimplePubsubClient port, host
