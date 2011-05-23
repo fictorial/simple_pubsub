@@ -1,0 +1,12 @@
+{
+  "name": "simple_pubsub",
+  "version": "0.0.1",
+  "description": "Simple publish-subscribe server and client",
+  "keywords": [ "publish-subscribe", "pubsub", "messaging", "client", "server" ],
+  "author": "Brian Hammond <brian@fictorial.com> (http://fictorial.com)",
+  "main": "./lib/simple_pubsub_client.js",
+  "bin": { "simple_pubsub_server": "./bin/simple_pubsub_server.js" },
+  "repository": { "type": "git", "url": "https://github.com/fictorial/simple_pubsub_server.git" },
+  "dependencies": { "optimist": "0.x.x", "log": "1.x.x" },
+  "engines": { "node": ">= 0.4.7" }
+}
