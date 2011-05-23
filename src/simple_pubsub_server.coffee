@@ -9,7 +9,7 @@ CRLF = '\r\n'
 
 next_client_id = 0
 clients = {}   # client.id => socket
-all_subs = {}  # chan => { client_id = > true }
+all_subs = {}  # chan => { client_id => true }
 
 server = net.createServer (client) ->
   client.setTimeout 0
@@ -18,7 +18,7 @@ server = net.createServer (client) ->
 
   client.id = next_client_id++
   clients[client.id] = client
-  client.subs = {}  # chan = > true
+  client.subs = {}  # chan => true
 
   client.on 'data', (data) =>
     try
