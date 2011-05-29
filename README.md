@@ -1,4 +1,4 @@
-# A Simple PUBSUB Server and Client for Node.js
+# A Simple PUBSUB Server and Client for Node.js ![Project Status](http://stillmaintained.com/fictorial/simple_pubsub.png)
 
 A publisher publishes a message on a channel which is just a string name.
 A subscriber subscribed to the channel will be forwarded the published message.
